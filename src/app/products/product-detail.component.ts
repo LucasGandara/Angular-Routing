@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product, ProductResolved } from './product';
-import { ProductService } from './product.service';
+
 @Component({
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
@@ -12,21 +12,13 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   errorMessage: string;
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const resolvedData: ProductResolved = this.route.snapshot.data['resolvedData'];
+    const resolvedData: ProductResolved =
+      this.route.snapshot.data['resolvedData'];
     this.errorMessage = resolvedData.error;
     this.onProductRetrieved(resolvedData.product);
-  }
-
-  getProduct(id: number): void {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.onProductRetrieved(product),
-      error: err => this.errorMessage = err
-    });
   }
 
   onProductRetrieved(product: Product): void {

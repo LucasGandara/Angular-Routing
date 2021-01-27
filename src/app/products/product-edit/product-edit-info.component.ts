@@ -8,7 +8,7 @@ import { Product } from '../product';
   templateUrl: './product-edit-info.component.html'
 })
 export class ProductEditInfoComponent implements OnInit {
-  @ViewChild(NgForm, {static: false}) productForm: NgForm;
+  @ViewChild(NgForm, { static: false }) productForm: NgForm;
 
   errorMessage: string;
   product: Product;
@@ -22,7 +22,7 @@ export class ProductEditInfoComponent implements OnInit {
       }
 
       this.product = data['resolvedData'].product;
-      this.errorMessage = data['resolvedData'].error;
     });
   }
+
 }

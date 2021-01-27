@@ -27,9 +27,8 @@ export class ProductListComponent implements OnInit {
   filteredProducts: Product[] = [];
   products: Product[] = [];
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.listFilter = this.route.snapshot.queryParamMap.get('filterBy') || '';
